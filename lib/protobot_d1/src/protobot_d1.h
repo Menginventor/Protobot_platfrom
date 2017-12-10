@@ -19,6 +19,8 @@ public:
   InterruptIn *enB;
   DigitalIn   *d_enA;
   DigitalIn   *d_enB;
+  int* relative_angular_distant = NULL;
+
   int q_state = 0;
   QE(PinName pin_A,PinName pin_B);
   void get_q_state();

@@ -35,6 +35,7 @@ void protobot::press_button(){
         while(mybutton->read() == 1) ; //wait for press button
 }
 void QE::get_q_state(){
+        int p_state = q_state;
 
         if( d_enA->read() == 0) {
                 if( d_enB->read() == 0) {
@@ -50,6 +51,20 @@ void QE::get_q_state(){
                 }
                 else{//B == 1
                         q_state = 2;
+                }
+        }
+        if (relative_angular_distant != NULL) {
+                if (q_state - p_state ==1) {
+                    *relative_angular_distant++;
+                }
+                else if (q_state - p_state == -1) {
+                    *relative_angular_distant--;
+                }
+                else if (q_state - p_state ==-3) {
+                    *relative_angular_distant++;
+                }
+                else if (q_state - p_state == 3) {
+                    *relative_angular_distant--;
                 }
         }
 
